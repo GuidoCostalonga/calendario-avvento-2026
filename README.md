@@ -2,7 +2,7 @@
 
 Calendario dell'Avvento a enigmi per ragazze e ragazzi dai 10 ai 14 anni, ambientato in 24 luoghi reali del Friuli Venezia Giulia (dicembre 2026).
 
-Pagina pubblicata: https://atlantefvg.it/calendario-avvento-2026/
+Pagina pubblicata: https://atlantefvg.it/calendario-avvento-2026/ (copia anche su https://costalonga.org/calendario-avvento-2026/)
 
 ## Come funziona
 

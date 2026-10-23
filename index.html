@@ -1,18 +1,26 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Calendario dell'Avvento a enigmi per ragazze e ragazzi dai 10 ai 14 anni: 24 buste in luoghi reali del Friuli Venezia Giulia, con lettura ad alta voce e righello per la lettura.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0D1C40">
+  <meta name="description" content="Calendario dell'Avvento a enigmi per ragazze e ragazzi dai 10 ai 14 anni: 24 buste in luoghi reali del Friuli Venezia Giulia, con lettura ad alta voce e righello per chi ha DSA.">
+  <title>Il taccuino del postino Bortolo · Atlante FVG</title>
+<link rel="canonical" href="https://atlantefvg.it/calendario-avvento-2026/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Atlante FVG">
 <meta property="og:title" content="Il taccuino del postino Bortolo">
 <meta property="og:description" content="24 buste di Natale in Friuli Venezia Giulia: un enigma al giorno dal 1° al 24 dicembre 2026.">
-<meta name="theme-color" content="#0D1C40">
-<title>Il taccuino del postino Bortolo</title>
+<meta property="og:url" content="https://atlantefvg.it/calendario-avvento-2026/">
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<script data-goatcounter="https://guidocostalonga.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script src="/consenso.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700;800&display=swap">
-<style>html{color-scheme:light} :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%}</style>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%}</style>
 </head>
 <body>
 <style>
@@ -84,9 +92,10 @@ input[type="range"] { width: 100%; accent-color: var(--green); min-height: 32px;
 
 /* scena di apertura */
 .hero { position: relative; overflow: hidden; height: clamp(230px, 40vw, 470px); }
+.hero .deco { position: absolute; inset: 0; }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .hero svg.route { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 42%; }
-.hero-cap { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 18px; right: 16px; color: #FFFFFF; font-family: var(--f-head); font-weight: 800; font-size: clamp(24px, 4.4vw, 50px); line-height: 1.1; text-shadow: 0 2px 14px rgba(5, 12, 28, .85), 0 0 2px rgba(5, 12, 28, .9); max-width: 17ch; text-wrap: balance; pointer-events: none; }
+.hero-cap { margin: 0; z-index: 2; position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 18px; right: 16px; color: #FFFFFF; font-family: var(--f-head); font-weight: 800; font-size: clamp(24px, 4.4vw, 50px); line-height: 1.1; text-shadow: 0 2px 14px rgba(5, 12, 28, .85), 0 0 2px rgba(5, 12, 28, .9); max-width: 17ch; text-wrap: balance; pointer-events: none; }
 .hero-cap small { display: block; font-weight: 500; font-size: .42em; margin-top: 8px; color: #FFE3A3; }
 @media (min-width: 900px) { .hero-cap { left: max(16px, calc((100% - 1040px) / 2)); } }
 .route-star { transition: fill .3s; }
@@ -263,7 +272,7 @@ details.howto ol { margin: 0 0 16px; padding-left: 1.3em; display: grid; gap: 8p
   </div>
 </header>
 
-<div class="hero" id="hero" aria-hidden="true"></div>
+<div class="hero" id="hero"><h1 class="hero-cap">Il taccuino del postino Bortolo<small>24 buste di Natale in Friuli Venezia Giulia</small></h1></div>
 <main><div class="wrap" id="app"></div></main>
 <div id="ruler" hidden></div>
 <button id="rulerGrip" type="button" hidden aria-label="Trascina per spostare il righello">
@@ -413,7 +422,10 @@ details.howto ol { margin: 0 0 16px; padding-left: 1.3em; display: grid; gap: 8p
   let snowRAF = 0;
   function renderHero() {
     const h = document.getElementById("hero");
-    h.innerHTML = '<canvas id="snow"></canvas>' + routeSVG() + '<div class="hero-cap">Il taccuino del postino Bortolo<small>24 buste di Natale in Friuli Venezia Giulia</small></div>';
+    h.querySelectorAll(".deco").forEach((x) => x.remove());
+    const wrap = document.createElement("div"); wrap.className = "deco"; wrap.setAttribute("aria-hidden", "true");
+    wrap.innerHTML = '<canvas id="snow"></canvas>' + routeSVG();
+    h.insertBefore(wrap, h.firstChild);
     startSnow();
   }
   function startSnow() {
